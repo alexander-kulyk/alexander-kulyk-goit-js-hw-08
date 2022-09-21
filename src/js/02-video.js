@@ -7,11 +7,12 @@ const player = new VimeoPlayer(iframe);
 const CURRENTTIME_KEY = "videoplayer-current-time"
 
 
+// Отримуємо  значенння
+// записуемо в сховище
 const onPlay = function(data) {
     const currentTimeValue = JSON.stringify(data);
-    if (currentTimeValue) {
-        localStorage.setItem(CURRENTTIME_KEY, currentTimeValue)  
-    }
+    
+    localStorage.setItem(CURRENTTIME_KEY, currentTimeValue)
     
 };
 
@@ -19,11 +20,12 @@ player.on('timeupdate', throttle(onPlay, 1000));
 
 
 
+//Отримуемо значення із сховища
 const getItemTime = localStorage.getItem(CURRENTTIME_KEY);
 const seconds = JSON.parse(getItemTime).seconds;
 
 player.setCurrentTime(seconds).then(function(seconds) {
-    // seconds = the actual time that the player seeked to
+    
 }).catch(function(error) {
     switch (error.name) {
         case 'RangeError':
