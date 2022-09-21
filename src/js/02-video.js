@@ -9,8 +9,9 @@ const CURRENTTIME_KEY = "videoplayer-current-time"
 
 const onPlay = function(data) {
     const currentTimeValue = JSON.stringify(data);
-    
-    localStorage.setItem(CURRENTTIME_KEY, currentTimeValue)
+    if (currentTimeValue) {
+        localStorage.setItem(CURRENTTIME_KEY, currentTimeValue)  
+    }
     
 };
 
