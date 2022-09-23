@@ -9,8 +9,6 @@ const refs = {
     message: document.querySelector('.feedback-form textarea'),
 };
 
-// refs.email.addEventListener('input', throttle(onEmailInput, 500));
-// refs.message.addEventListener('input', throttle(onMessagelInput, 500));
 
 refs.form.addEventListener('submit', onFormSubmit);
 refs.form.addEventListener('input', throttle(onFormInput, 500));
@@ -18,6 +16,7 @@ refs.form.addEventListener('input', throttle(onFormInput, 500));
 function onFormInput(evt) {
     const savedForm  = localStorage.getItem(INPUT_KYE);
     let formData = savedForm ? JSON.parse(savedForm)  : {};
+
     formData[evt.target.name] = evt.target.value;
     //formData.email = 
     // console.log('formData',evt.target.name);
@@ -44,11 +43,10 @@ function onFormSubmit(evt) {
     if (refs.email.value === "" || refs.message.value === "") {
         alert("Please fill in all the fields!");
    } else{
-    
-    console.log('formData',formData);
+
+    console.log('sent fortm');
     localStorage.removeItem(INPUT_KYE)
     refs.form.reset();
-    // formData = {};
    };
 
 };

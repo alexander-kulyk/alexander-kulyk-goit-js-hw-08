@@ -6,6 +6,7 @@ const player = new VimeoPlayer(iframe);
 
 const CURRENTTIME_KEY = "videoplayer-current-time"
 
+
 // Отримуємо  значенння
 // записуемо в сховище
 const onPlay = function(data) {
